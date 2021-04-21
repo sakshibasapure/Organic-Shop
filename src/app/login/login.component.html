@@ -1,3 +1,28 @@
-<button 
-    (click)="login()"
-    class="btn btn-primary">Login with Google</button>
+<form  method="post" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+  <div class="loginbox">
+    <h1>Login</h1>
+    <p>Please fill to login in your account.</p>
+    <hr>
+    <div class="container" >
+      <div>
+        <label for="uname">Username</label>
+        <input type="text" placeholder="Enter Username" formControlName="username" required>
+        <label class="text-danger" *ngIf="username.touched && username.invalid">Username is required</label>
+      </div>
+
+      <div>
+        <label for="psw">Password</label>
+        <input type="password" placeholder="Enter Password" formControlName="password" required>
+        <label class="text-danger"  *ngIf="password.touched && password.invalid">Password is required</label> 
+      </div>
+
+  
+      <button type="submit">Login</button>
+      <br>
+      <div class="container signin">
+        <p>New user? Register a new account! <a [routerLink]="['/register']" >Register</a>.</p>
+    </div>
+    </div>
+  </div>
+  </form>
+  

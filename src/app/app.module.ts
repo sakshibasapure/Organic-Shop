@@ -1,7 +1,15 @@
+import { AdminAuthGuard } from './guards/admin-auth.service';
+import { AuthGuard } from './guards/auth.service';
+
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+
+
 
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -14,6 +22,10 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
+import { UserService } from './services/user.service';
+
 
 @NgModule({
   declarations: [
@@ -27,24 +39,39 @@ import { LoginComponent } from './login/login.component';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
+       
+   
     BrowserModule,
     NgbModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+
+    
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'check-out', component: CheckOutComponent },
-      { path: 'order-success', component: OrderSuccessComponent },
-      { path: 'my/orders', component: MyOrdersComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'admin/products', component: AdminProductsComponent },
-      { path: 'admin/orders', component: AdminOrdersComponent }
+      { path: 'register', component: RegisterComponent },
+
+      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
+      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+
+      { path: 'admin/products', component: AdminProductsComponent, canLoad: [AdminAuthGuard], canActivate: [AdminAuthGuard] },
+      { path: 'admin/orders', component: AdminOrdersComponent,canLoad: [AdminAuthGuard], canActivate: [AdminAuthGuard] }
     ]) 
   ],
   providers: [
+    UserService,
+    AuthGuard,
+    AdminAuthGuard
+    
   ],
   bootstrap: [AppComponent]
 })
