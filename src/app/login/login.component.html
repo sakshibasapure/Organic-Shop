@@ -2,6 +2,7 @@
   <div class="loginbox">
     <h1>Login</h1>
     <p>Please fill to login in your account.</p>
+    <label class="text-danger"  *ngIf="loginForm.errors">Username or Password is incorrect.</label>
     <hr>
     <div class="container" >
       <div>

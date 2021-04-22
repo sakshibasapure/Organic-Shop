@@ -9,7 +9,7 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/shopping-cart']" routerLinkActive="active">Shopping Cart</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!userData.isLoggedIn">
         <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
       </li>
 
@@ -19,8 +19,10 @@
         </a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+          <ng-container  *ngIf="userData.userTypeId==userType.admin" >          
             <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
             <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+          </ng-container>
           <a class="dropdown-item" (click)=logout()>Log Out</a>
         </div>
       </li>
