@@ -1,3 +1,4 @@
+import { ProductService } from 'src/app/services/product.service';
 import { AdminAuthGuard } from './guards/admin-auth.service';
 import { AuthGuard } from './guards/auth.service';
 
@@ -8,7 +9,8 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
-
+import { CommonModule } from '@angular/common';
+import { CustomFormsModule } from 'ng2-validation';
 
 
 import { AppComponent } from './app.component';
@@ -25,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 import { UserService } from './services/user.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 
 @NgModule({
@@ -40,20 +43,21 @@ import { UserService } from './services/user.service';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductFormComponent
   ],
   imports: [
        
-   
+    CommonModule, 
     BrowserModule,
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-
+    CustomFormsModule,
     
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
+      { path: '', component: ProductsComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'login', component: LoginComponent },
@@ -63,14 +67,37 @@ import { UserService } from './services/user.service';
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
 
-      { path: 'admin/products', component: AdminProductsComponent, canLoad: [AdminAuthGuard], canActivate: [AdminAuthGuard] },
-      { path: 'admin/orders', component: AdminOrdersComponent,canLoad: [AdminAuthGuard], canActivate: [AdminAuthGuard] }
+      { 
+        path: 'admin/products/new', 
+        component: ProductFormComponent, 
+        canLoad: [AdminAuthGuard], 
+        canActivate: [AdminAuthGuard] 
+      },
+      { 
+        path: 'admin/products/:id', 
+        component: ProductFormComponent, 
+        canLoad: [AdminAuthGuard], 
+        canActivate: [AdminAuthGuard] 
+      },
+      { 
+        path: 'admin/products', 
+        component: AdminProductsComponent, 
+        canLoad: [AdminAuthGuard], 
+        canActivate: [AdminAuthGuard] 
+      },
+      { 
+        path: 'admin/orders', 
+        component: AdminOrdersComponent,
+        canLoad: [AdminAuthGuard], 
+        canActivate: [AdminAuthGuard] 
+      }
     ]) 
   ],
   providers: [
     UserService,
     AuthGuard,
-    AdminAuthGuard
+    AdminAuthGuard,
+    ProductService
     
   ],
   bootstrap: [AppComponent]

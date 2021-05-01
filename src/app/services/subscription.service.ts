@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { User } from '../models/user';
-//import { Book } from '../msodels/book';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { User } from '../models/user';
 export class SubscriptionService {
 
   userData = new BehaviorSubject<User>(new User());
-  //searchItemValue$ = new BehaviorSubject<string>('');
+  searchItemValue$ = new BehaviorSubject<string>('');
   //wishlistItemcount$ = new Subject<number>();
   //wishlistItem$ = new BehaviorSubject<Book[]>([]);
   //cartItemcount$ = new Subject<number>();
