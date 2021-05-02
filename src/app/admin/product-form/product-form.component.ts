@@ -17,7 +17,7 @@ export class ProductFormComponent implements OnInit {
   //productForm: FormGroup;
   product: Product = new Product();
   productId;
-  categoryList: [];
+  categoryList:  [];
   category$;
   private unsubscribe$ = new Subject<void>();
   
@@ -52,6 +52,13 @@ export class ProductFormComponent implements OnInit {
     return this.productForm.get('price');
   }
 
+  // Choose category using select dropdown
+  changeCategory(e) {
+    console.log(e.value)
+    this.category.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
   get category() {
     return this.productForm.get('category');
   }
@@ -67,6 +74,7 @@ export class ProductFormComponent implements OnInit {
       .subscribe(
         (categoryData: []) => {
           this.categoryList = categoryData;
+          console.log(this.category)
         }, error => {
           console.log('Error ocurred while fetching category List : ', error);
         });
@@ -122,6 +130,7 @@ export class ProductFormComponent implements OnInit {
       .subscribe(
         () => {
           console.log("Product added successfully!")
+          console.log(this.productForm.value)
           this.router.navigate(['/admin/products']);
         }, error => {
           this.productForm.reset();
