@@ -12,7 +12,7 @@ export class SubscriptionService {
   searchItemValue$ = new BehaviorSubject<string>('');
   //wishlistItemcount$ = new Subject<number>();
   //wishlistItem$ = new BehaviorSubject<Book[]>([]);
-  //cartItemcount$ = new Subject<number>();
+  cartItemcount$ = new Subject<number>();
 
   constructor() { }
 }

@@ -1,1 +1,39 @@
-<p>check-out works!</p>
+<h2>Shipping</h2>
+<div class="row">
+    <div class="col-6">
+        <form [formGroup]="checkOutForm" (ngSubmit)="placeOrder()">
+            <div class="form-group">
+                  <label for="">Name</label>
+                  <input name="name"  type="text" class="form-control" formControlName="name" required>
+                  <label class="text-danger" *ngIf="name.touched && name.invalid">This field is mandatory</label>
+            </div>
+          
+            <div class="form-group">
+              <label for="">Address</label>
+              <input  name="addressLine1"  type="text" class="form-control" formControlName="addressLine1" placeholder="Line 1" required>
+              <label class="text-danger" *ngIf="addressLine1.touched && addressLine1.invalid">This field is mandatory</label>
+              <label for=""></label>
+              <input  name="addressLine2"  type="text" class="form-control" formControlName="addressLine2" placeholder="Line 2"required>
+              <label class="text-danger" *ngIf="addressLine2.touched && addressLine2.invalid">This field is mandatory</label>
+            </div>
+          
+            <div class="form-group">
+              <label for="">Pincode</label>
+              <input  name="city"  type="text" class="form-control" formControlName="pincode" required>
+              <label class="text-danger" *ngIf="pincode.touched && pincode.invalid">This field is mandatory</label>
+              <label class="text-danger"*ngIf="pincode.touched && pincode.hasError('pattern')">Invalid Pincode</label>
+            </div>
+          
+            <div class="form-group">
+              <label for="">State</label>
+              <input  name="city"  type="text" class="form-control" formControlName="state" required>
+              <label class="text-danger" *ngIf="state.touched && state.invalid">This field is mandatory</label>
+            </div>
+            <button 
+              class="btn btn-primary">Place Order</button>   
+        </form>       
+    </div>
+    <div class="col-6">
+        <shopping-cart-summary></shopping-cart-summary>
+    </div>
+</div>

@@ -1,6 +1,12 @@
-import { ShoppingCartService } from './../services/shopping-cart.service';
+  
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
-import { Component, Input } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user.service';
+import { SubscriptionService } from 'src/app/services/subscription.service';
 
 @Component({
   selector: 'product-card',
@@ -9,15 +15,35 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductCardComponent {
   @Input('product') product: Product;
+  cartItemCount$: Observable<number>;
+  
+   userId;
+  isActive = false;
+  userData$: Observable<User>;
 
-  constructor(private cartService : ShoppingCartService) { }
+  constructor(private router: Router, 
+              private subscriptionService: SubscriptionService,
+              private authService: AuthenticationService,
+              private userService: UserService
+  
+    //private wishlistService: WishlistService
+    ) {
 
-  addToCart(product: Product) {
-    let cartId = localStorage.getItem('cartId')
-    if (!cartId) {
+      this.userId = localStorage.getItem('userId');
+      this.userService.getCartItemCount(this.userId).subscribe((data: number) => {
+      this.subscriptionService.cartItemcount$.next(data);
+     
+    });
+   }
 
-    }
+  ngOnInit() {
+    this.userData$ = this.subscriptionService.userData;
   }
+
+  goToPage(id: number) {
+    this.router.navigate(['/products/details/', id]);
+  }
+
 
 
 

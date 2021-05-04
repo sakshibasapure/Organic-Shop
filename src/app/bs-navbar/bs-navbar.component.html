@@ -7,7 +7,12 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/shopping-cart']" routerLinkActive="active">Shopping Cart</a>
+        <a class="nav-link" [routerLink]="['/shopping-cart']" routerLinkActive="active">
+          Shopping Cart
+          <span class="badge badge-warning badge-pill">
+            {{cartItemCount$ | async}}
+          </span>
+        </a>
       </li>
       <li class="nav-item" *ngIf="!userData.isLoggedIn">
         <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>

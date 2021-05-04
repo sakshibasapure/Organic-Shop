@@ -1,1 +1,16 @@
-<p>my-orders works!</p>
+<h1>Orders</h1>
+<table class="table" >
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead> 
+  <tbody>
+    <tr  *ngIf="let row" >
+      <td>{{row.orderId}}</td>
+      <td>{{row.cartTotal|currency : 'INR'}}</td>
+    </tr>
+  </tbody> 
+</table>

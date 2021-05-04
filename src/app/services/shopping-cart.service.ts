@@ -11,11 +11,11 @@ export class ShoppingCartService {
   baseURL: string;
 
   constructor(private http: HttpClient) {
-    this.baseURL = '/api/shoppingcart/';
+    this.baseURL = 'https://localhost:5001/api/shoppingcart/';
   }
 
-  addBookToCart(userId: number, bookId: number) {
-    return this.http.post<number>(this.baseURL + `addToCart/${userId}/${bookId}`, {});
+  addProductToCart(userId: number, productId: number) {
+    return this.http.post<number>(this.baseURL + `addToCart/${userId}/${productId}`, {});
   }
 
   getCartItems(userId: number) {
@@ -26,12 +26,12 @@ export class ShoppingCartService {
       }));
   }
 
-  removeCartItems(userId: number, bookId: number) {
-    return this.http.delete<number>(this.baseURL + `${userId}/${bookId}`, {});
+  removeCartItems(userId: number, productId: number) {
+    return this.http.delete<number>(this.baseURL + `${userId}/${productId}`, {});
   }
 
-  deleteOneCartItem(userId: number, bookId: number) {
-    return this.http.put<number>(this.baseURL + `${userId}/${bookId}`, {});
+  deleteOneCartItem(userId: number, productId: number) {
+    return this.http.put<number>(this.baseURL + `${userId}/${productId}`, {});
   }
 
   clearCart(userId: number) {

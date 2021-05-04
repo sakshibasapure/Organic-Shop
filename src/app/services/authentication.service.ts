@@ -24,7 +24,7 @@ export class AuthenticationService {
           localStorage.setItem('authToken', response.token);
           this.setUserDetails();
           localStorage.setItem('userId', response.userDetails.userId);
-          //this.subscriptionService.cartItemcount$.next(response.carItemCount);
+          this.subscriptionService.cartItemcount$.next(response.carItemCount);
         }
         return response;
       }));
@@ -65,6 +65,6 @@ export class AuthenticationService {
     this.subscriptionService.userData.next(new User());
     //this.subscriptionService.wishlistItem$.next([]);
     //this.subscriptionService.wishlistItemcount$.next(0);
-    //this.subscriptionService.cartItemcount$.next(0);
+    this.subscriptionService.cartItemcount$.next(0);
   }
 }

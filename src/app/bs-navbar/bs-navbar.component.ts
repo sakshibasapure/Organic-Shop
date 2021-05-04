@@ -24,6 +24,8 @@ export class BsNavbarComponent  implements OnInit, OnDestroy {
   wishListCount$: Observable<number>;
   cartItemCount$: Observable<number>;
 
+  
+
   constructor(
     private router: Router,
     private authService: AuthenticationService,
@@ -32,11 +34,12 @@ export class BsNavbarComponent  implements OnInit, OnDestroy {
     //private wishlistService: WishlistService
     ) {
 
-    this.userId = localStorage.getItem('userId');
+      this.userId = localStorage.getItem('userId');
     //this.wishlistService.getWishlistItems(this.userId).subscribe();
-    //this.userService.getCartItemCount(this.userId).subscribe((data: number) => {
-    //this.subscriptionService.cartItemcount$.next(data);
-    //});
+      this.userService.getCartItemCount(this.userId).subscribe((data: number) => {
+      this.subscriptionService.cartItemcount$.next(data);
+     
+    });
   }
 
   ngOnInit() {
@@ -45,9 +48,12 @@ export class BsNavbarComponent  implements OnInit, OnDestroy {
       this.userData = data;
     });
 
-   // this.cartItemCount$ = this.subscriptionService.cartItemcount$;
+    this.cartItemCount$ = this.subscriptionService.cartItemcount$;
     //this.wishListCount$ = this.subscriptionService.wishlistItemcount$;
+    
+    
   }
+
 
   ngOnDestroy() {
     if (this.userDataSubscription) {
