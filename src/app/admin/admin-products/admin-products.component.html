@@ -7,7 +7,6 @@
             <th>Title</th>
             <th>Price</th>
             <th></th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -16,13 +15,6 @@
             <td> {{ p.price}} </td>
             <td>
                 <a  type="button" class="btn btn-light btn-sm"  [routerLink]="['/admin/products/', p.productId]">Edit</a>
-            </td>
-            <td>
-                <button type="button"  class="btn btn-light btn-sm" 
-                (click)="confirmDelete()"
-                >
-                        Remove
-                </button>
             </td>
         </tr>
     </tbody>
