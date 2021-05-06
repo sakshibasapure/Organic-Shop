@@ -79,10 +79,21 @@ export class ProductFormComponent implements OnInit {
           console.log('Error ocurred while fetching category List : ', error);
         });
 
+        this.route.params.subscribe(
+          params => {
+            if (params.id) {
+              this.productId = +params.id;
+              this.fetchProductData();
+            }
+          }
+        )
+
+        
+
 
   }
 
-  /*fetchProductData() {
+  fetchProductData() {
    
     this.productService.getProductById(this.productId)
       .pipe(takeUntil(this.unsubscribe$))
@@ -92,7 +103,7 @@ export class ProductFormComponent implements OnInit {
         }, error => {
           console.log('Error ocurred while fetching product data : ', error);
         });
-  }*/
+  }
 
   onFormSubmit() {
     if (!this.productForm.valid) {
@@ -102,19 +113,19 @@ export class ProductFormComponent implements OnInit {
 
     this.formData.append('productFormData', JSON.stringify(this.productForm.value));
 
-    /*if (this.productId) {
+    if (this.productId) {
       this.editProductDetails();
     } else {
       this.saveProductDetails();
-    }*/
+    }
   
-    this.saveProductDetails();
+    
    
     
   }
 
-  /*editProductDetails() {
-    this.productService.updateProductDetails(this.formData)
+  editProductDetails() {
+    this.productService.updateProductDetails(this.productForm.value)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(
         () => {
@@ -122,7 +133,7 @@ export class ProductFormComponent implements OnInit {
         }, error => {
           console.log('Error ocurred while updating product data : ', error);
         });
-  }*/
+  }
 
   saveProductDetails() {
     this.productService.addProduct(this.productForm.value)
@@ -138,14 +149,21 @@ export class ProductFormComponent implements OnInit {
         });
   }
 
-  
+  confirmDelete(): void {
+    this.productService.deleteProduct(this.productId).subscribe(
+      () => {
+        this.router.navigate(['/admin/products']);
+      }, error => {
+        console.log('Error ocurred while fetching product data : ', error);
+      });
+  }
 
 
   cancel() {
     this.router.navigate(['/admin/products']);
   }
 
-  /*setProductFormData(productFormData) {
+  setProductFormData(productFormData) {
     this.productForm.setValue({
       productId: productFormData.productId,
       productName: productFormData.productName,
@@ -155,7 +173,8 @@ export class ProductFormComponent implements OnInit {
       coverImagePath: productFormData.coverImagePath
     
     });
-  }*/
+  }
+  
 
 
 
