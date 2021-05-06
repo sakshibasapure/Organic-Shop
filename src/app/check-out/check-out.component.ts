@@ -90,7 +90,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
         .subscribe(
           result => {
             this.subscriptionService.cartItemcount$.next(result);
-            this.router.navigate(['/my/orders']);
+            this.router.navigate(['/order-success']);
           }, error => {
             
             console.log('Error ocurred while placing order : ', error);

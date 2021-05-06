@@ -45,6 +45,7 @@ export class AuthenticationService {
   }
 
   logout() {
+    
     localStorage.clear();
     this.resetSubscription();
     this.setTempUserId();

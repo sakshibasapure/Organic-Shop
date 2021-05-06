@@ -2,15 +2,15 @@
 <table class="table" >
   <thead>
     <tr>
-      <th>Customer</th>
+      <th>Order ID</th>
       <th>Date</th>
       <th></th>
     </tr>
   </thead> 
   <tbody>
-    <tr  *ngIf="let row" >
-      <td>{{row.orderId}}</td>
-      <td>{{row.cartTotal|currency : 'INR'}}</td>
+    <tr  *ngFor="let o  of OrderList" >
+      <td>{{o.orderId}}</td>
+      <td>{{o.cartTotal|currency : 'INR'}}</td>
     </tr>
   </tbody> 
 </table>
