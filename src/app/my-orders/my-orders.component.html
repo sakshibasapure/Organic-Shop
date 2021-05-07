@@ -4,12 +4,13 @@
     <tr>
       <th>Order ID</th>
       <th>Date</th>
-      <th></th>
+      <th>Total Amount</th>
     </tr>
   </thead> 
   <tbody>
     <tr  *ngFor="let o  of OrderList" >
       <td>{{o.orderId}}</td>
+      <td>{{o.orderDate}}</td>
       <td>{{o.cartTotal|currency : 'INR'}}</td>
     </tr>
   </tbody> 

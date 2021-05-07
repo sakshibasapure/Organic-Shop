@@ -1,6 +1,6 @@
+import { ShoppingCartService } from './../services/shopping-cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-//import { CartService } from 'src/app/services/cart.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { SubscriptionService } from 'src/app/services/subscription.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    //private cartService: CartService,
+    private cartService: ShoppingCartService,
     private authenticationService: AuthenticationService,
     private subscriptionService: SubscriptionService,
     //private wishlistService: WishlistService
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         .pipe(takeUntil(this.unsubscribe$))
         .subscribe(
           () => {
-            //this.setShoppingCart();
+            this.setShoppingCart();
             //this.setWishlist();
             console.log('Successful login')
             this.router.navigate([returnUrl]);
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  /*setShoppingCart() {
+  setShoppingCart() {
     this.cartService.setCart(this.authenticationService.oldUserId, this.userId)
       .subscribe(result => {
         this.subscriptionService.cartItemcount$.next(result);
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       });
   }
 
-  setWishlist() {
+  /*setWishlist() {
     this.wishlistService.getWishlistItems(this.userId).subscribe();
   }*/
 

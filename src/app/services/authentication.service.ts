@@ -24,6 +24,7 @@ export class AuthenticationService {
           localStorage.setItem('authToken', response.token);
           this.setUserDetails();
           localStorage.setItem('userId', response.userDetails.userId);
+          console.log("yep here")
           this.subscriptionService.cartItemcount$.next(response.carItemCount);
         }
         return response;

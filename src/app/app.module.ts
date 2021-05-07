@@ -23,7 +23,6 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -47,7 +46,6 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminProductsComponent,
-    AdminOrdersComponent,
     LoginComponent,
     RegisterComponent,
     ProductFormComponent,
@@ -93,12 +91,6 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
       { 
         path: 'admin/products', 
         component: AdminProductsComponent, 
-        canLoad: [AdminAuthGuard], 
-        canActivate: [AdminAuthGuard] 
-      },
-      { 
-        path: 'admin/orders', 
-        component: AdminOrdersComponent,
         canLoad: [AdminAuthGuard], 
         canActivate: [AdminAuthGuard] 
       }
