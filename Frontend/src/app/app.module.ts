@@ -32,6 +32,8 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
 import { ProductCardComponent } from './product-card/product-card.component';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { AddtowishlistComponent } from './addtowishlist/addtowishlist.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 
@@ -53,6 +55,8 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
     ProductCardComponent,
     AddToCartComponent,
     ShoppingCartSummaryComponent,
+    AddtowishlistComponent,
+    WishlistComponent,
     
   ],
   imports: [
@@ -75,6 +79,7 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+      { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
 
       { 
         path: 'admin/products/new', 

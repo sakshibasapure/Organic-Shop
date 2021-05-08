@@ -1,0 +1,33 @@
+<ng-container *ngIf="wishlistItems$ | async as wishlistItems">
+    <h1>WishList</h1>
+    <div class="row col-10">
+        <p>
+            You have items in your wishlist.
+            <button 
+                (click)="clearWishlist()"
+                class="btn btn-light btn-sm" >Clear Wishlist</button>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Product</th>
+                    <th style="width: 230px ">Price</th>
+                    <th class="text-center">Add to Cart</th>
+                    <th class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of wishlistItems">
+                    <td></td>
+                    <td>{{item.productName}}</td>
+                    <td>{{ item.price | currency : 'USD' }}</td>
+                    <td>
+                        <add-to-cart [productId]="item.productId"></add-to-cart>
+                    </td>
+                    <td class="text-right"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-container>

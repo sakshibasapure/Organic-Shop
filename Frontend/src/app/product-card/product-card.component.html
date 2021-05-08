@@ -5,7 +5,11 @@
         <p class="card-text">{{ product.description }}</p>
         <p class="card-text">{{ product.price | currency:'USD':true }}</p>  
     </div>
+    <div class="card-footer" *ngIf="(userData$ | async).isLoggedIn" >
+        <app-addtowishlist [productId]="product.productId"></app-addtowishlist>
+    </div>
     <div class="card-footer">
         <add-to-cart [productId]="product.productId"></add-to-cart>
     </div>
+    
 </div>

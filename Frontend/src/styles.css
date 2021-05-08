@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.min.css";
 
 body { padding-top: 80px};
 
@@ -19,3 +20,14 @@ button.btn-submit:focus,button.btn-submit:hover{
     background-color: #38547b;
 }
 
+.navbar-light .navbar-brand {
+    color: mediumseagreen;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #ffff;
+    background-color: mediumseagreen;
+    border-color: mediumseagreen;
+
+}

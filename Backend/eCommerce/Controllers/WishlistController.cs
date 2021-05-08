@@ -38,7 +38,7 @@ namespace eCommerce.Controllers
         /// <param name="userId"></param>
         /// <param name="productId"></param>
         /// <returns>All the items in the Wishlist</returns>
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         [Route("ToggleWishlist/{userId}/{productId}")]
         public async Task<List<Product>> Post(int userId, int productId)
@@ -52,7 +52,7 @@ namespace eCommerce.Controllers
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        [Authorize]
+        ////[Authorize]
         [HttpDelete("{userId}")]
         public int Delete(int userId)
         {
