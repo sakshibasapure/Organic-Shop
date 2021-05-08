@@ -16,7 +16,7 @@ An organic shop is created with ASP.NET Core 5.0 and Angular 11, using SQL Serve
  Clone this repository: https://github.com/sakshibasapure/BCT-POC-4-Sakshi-Basapure.git
  
 #### To run Backend (ASP.NET 5.0)
-1. Enter ``` cd eCommerce ``` 
+1. Enter ``` cd Backend ``` 
 2. Open and click on ```eCommerce.sln``` to build application
 3. Put your connection string in appsettings.json file
 4. Enter ```dotnet ef database update``` to load schema in database
