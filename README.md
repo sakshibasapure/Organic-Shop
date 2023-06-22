@@ -1,6 +1,7 @@
 ## Organic Shop
 An organic shop is created with ASP.NET Core 5.0 and Angular 11, using SQL Server as database. 
 
+![image](https://github.com/sakshibasapure/Organic-Shop/assets/40641044/0c2bd8f9-082f-4a0e-9e78-040441e5a623)
 
 ### Tools and Frameworks used 
 - ASP .NET Core 5.0
